@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/SaveAs/XML.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/SaveAs/CSV.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Files/test.csv</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/SaveAs/JSON.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Create.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Cut.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/GUI/SaveAsOptions.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/casoeditor/CasoEditor.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Files/gg.csv</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Editor/CareTaker.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Undo.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Redo.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Editor/Memento.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/SaveAs/ISaveAS.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Files/test.json</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Paste.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/GUI/Editor.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Invoker.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/SaveAs/Context.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Editor/Text.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Files/testTXT.txt</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/GUI/ColorText.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Files/testxml.xml</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/GUI/OpenFiles.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/SaveAs/TXT.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Editor/Controller.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Copy.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Files/test2.json</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/SaveAs.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/ICommand.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Editor/Originator.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Save.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/Open.java</file>
+            <file>file:/Users/kduran/Desktop/caso1Diseno/CasoEditor/src/Command/CommandManager.java</file>
+        </group>
+    </open-files>
+</project-private>
