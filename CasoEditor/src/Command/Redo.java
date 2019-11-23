@@ -7,6 +7,7 @@ package Command;
 
 import Editor.CareTaker;
 import Editor.Memento;
+import Editor.Originator;
 import casoeditor.CasoEditor;
 
 /**
@@ -15,13 +16,16 @@ import casoeditor.CasoEditor;
  */
 public class Redo implements ICommand{
     
-    public Memento redoMemento(){
+    Originator originator = new Originator();
+    
+    public void redoMemento(){
         if(CareTaker.mementos.size()<=20){
-            return CareTaker.mementos.get(CasoEditor.currentMemento+1);
+            originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento).getState());           
+        }else{
+            System.out.println("No hay mas registros por rehacer");
         }
-        return null;
-        
     }
+    
     @Override
     public void execute() {
         redoMemento();

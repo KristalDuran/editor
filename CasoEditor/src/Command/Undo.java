@@ -5,14 +5,29 @@
  */
 package Command;
 
+import Editor.CareTaker;
+import Editor.Memento;
+import Editor.Originator;
+import casoeditor.CasoEditor;
+
 /**
  *
  * @author kduran
  */
 public class Undo implements ICommand{
+    Originator originator = new Originator();
     
+     public void undoMemento(){
+        if(CareTaker.mementos.size()>0){
+            originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento-2).getState());           
+        }else{
+            System.out.println("No hay mas registros por deshacer");
+        }
+  
+    }
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        undoMemento();
+        
     }
 }
