@@ -5,7 +5,10 @@
  */
 package casoeditor;
 
+import Command.Redo;
+import Command.Undo;
 import Editor.CareTaker;
+import Editor.Memento;
 import Editor.Originator;
 import Editor.Save;
 import Editor.Text;
@@ -26,6 +29,12 @@ public class CasoEditor {
     
     public static CareTaker caretaker = new CareTaker();
     public static Editor editor = new Editor();
+    //public static Undo undo = new Undo();
+    //ssspublic static Redo redo = new Redo();
+    
+    public static int currentMemento;
+   
+
     
     public static void main(String[] args) {
         
@@ -34,7 +43,6 @@ public class CasoEditor {
         Save save = new Save();
         save.start();
         // TODO code application logic here
-        
         
         /*CareTaker caretaker = new CareTaker();
         Originator originator = new Originator();
@@ -55,24 +63,47 @@ public class CasoEditor {
         text4.setBlack(true);
         text4.setColor("negro");
         originator.setState(text1);
+        caretaker.addMemento( originator.save() );
         originator.setState(text2);
         caretaker.addMemento( originator.save() );
         originator.setState(text3);
         caretaker.addMemento( originator.save() );
         originator.setState(text4);
-        originator.restore( caretaker.getMemento() );*/
+        caretaker.addMemento( originator.save() );
+        //originator.restore( caretaker.getMemento() );
         
-        Timer timer = new Timer(3000, new ActionListener(){
+        currentMemento = caretaker.mementos.size();  //4 
+        System.out.println(""+currentMemento);
+        System.out.println("estoy probando");
+        undo.execute();
+        currentMemento = currentMemento-1;  //3
+        System.out.println(""+currentMemento);
+        undo.execute();
+        currentMemento = currentMemento-1; //2
+         System.out.println(""+currentMemento);
+        redo.execute();
+        currentMemento = currentMemento+1; //3
+        redo.execute();
+        System.out.println(""+currentMemento);*/
+        
+        
+        
+        
+        
+        
+        /*Timer timer = new Timer(3000, new ActionListener(){
                
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //aqui va la accion de guardar un memento cada 3 segundos
-                //hacer un metodo para llamarlo aquí 
+                 
+                
+                //ocupo traerme el memento actual y guardarlo
+                //caretaker.addMemento(m);
+                currentMemento = caretaker.mementos.size();
             }
-            });
+            });*/
     }
-    //undo deshacer
-    //redo rehacer
+
     //colocar el guardar estado despues de presionar cada boton
     
     

@@ -5,14 +5,30 @@
  */
 package Command;
 
+import Editor.CareTaker;
+import Editor.Memento;
+import Editor.Originator;
+import casoeditor.CasoEditor;
+
 /**
  *
  * @author kduran
  */
 public class Redo implements ICommand{
     
+    Originator originator = new Originator();
+    
+    public void redoMemento(){
+        if(CareTaker.mementos.size()<=20){
+            originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento).getState());           
+        }else{
+            System.out.println("No hay mas registros por rehacer");
+        }
+    }
+    
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        redoMemento();
+        
     }
 }
