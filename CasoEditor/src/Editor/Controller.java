@@ -16,6 +16,8 @@ import Command.Save;
 import Command.SaveAs;
 import Command.Undo;
 import SaveAs.*;
+import static casoeditor.CasoEditor.caretaker;
+import static casoeditor.CasoEditor.currentMemento;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -25,7 +27,7 @@ import java.util.ArrayList;
  */
 public class Controller {
     Invoker invoker;
-    Originator originator;
+    
     CareTaker careTaker;
     ISaveAS saveAs;
     Context context;
@@ -36,9 +38,15 @@ public class Controller {
     
     public Controller() {
         invoker = new Invoker();
-        originator = new Originator();
         context = new Context();
-        careTaker = new CareTaker();
+        careTaker = casoeditor.CasoEditor.caretaker;
+        Text text = new Text();
+        text.setColor("");
+        text.addWord("");
+        text.setBlack(false);
+        casoeditor.CasoEditor.originator.setState(text);
+        getCareTaker().addMemento(getOriginator().save());
+        currentMemento++;
     }
 
     public void addNegrita(String text){
@@ -46,11 +54,11 @@ public class Controller {
     }
     
     public Text getText() {
-        return originator.save().getState();
+        return casoeditor.CasoEditor.originator.save().getState();
     }
 
     public Originator getOriginator(){
-        return originator;
+        return casoeditor.CasoEditor.originator;
     }
     
     public void setSaveAs(String type){

@@ -15,15 +15,14 @@ import casoeditor.CasoEditor;
  * @author kduran
  */
 public class Undo implements ICommand{
-    Originator originator = new Originator();
     
      public void undoMemento(){
         if(CareTaker.mementos.size()>0){
-            originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento-2).getState());           
+            casoeditor.CasoEditor.originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento-2).getState());           
         }else{
             System.out.println("No hay mas registros por deshacer");
         }
-  
+        casoeditor.CasoEditor.currentMemento = casoeditor.CasoEditor.currentMemento-1;
     }
     @Override
     public void execute() {

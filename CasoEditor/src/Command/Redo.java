@@ -16,14 +16,13 @@ import casoeditor.CasoEditor;
  */
 public class Redo implements ICommand{
     
-    Originator originator = new Originator();
-    
     public void redoMemento(){
-        if(CareTaker.mementos.size()<=20){
-            originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento).getState());           
+        if(CareTaker.mementos.size()<=20 && CasoEditor.currentMemento < CareTaker.mementos.size()){
+            casoeditor.CasoEditor.originator.setState(CareTaker.mementos.get(CasoEditor.currentMemento).getState());           
         }else{
             System.out.println("No hay mas registros por rehacer");
         }
+        casoeditor.CasoEditor.currentMemento = casoeditor.CasoEditor.currentMemento +1;
     }
     
     @Override

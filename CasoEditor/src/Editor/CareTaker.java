@@ -18,6 +18,7 @@ public class CareTaker {
         if(mementos.size()==20){
             mementos.remove(0);
             mementos.add(m);
+            m.getState().toString();
         }else{
             mementos.add(m);
         }

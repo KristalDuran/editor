@@ -5,6 +5,8 @@
  */
 package Editor;
 
+import static casoeditor.CasoEditor.caretaker;
+import static casoeditor.CasoEditor.currentMemento;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +18,10 @@ public class Save extends Thread{
     public void run()
    {
         try {
-            casoeditor.CasoEditor.editor.save();
-            Thread.sleep(3000);
+            while(true){
+                casoeditor.CasoEditor.editor.save();
+                Thread.sleep(3000);
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(Save.class.getName()).log(Level.SEVERE, null, ex);
         }

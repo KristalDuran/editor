@@ -28,13 +28,12 @@ public class CasoEditor {
      */
     
     public static CareTaker caretaker = new CareTaker();
+    public static Originator originator = new Originator();
     public static Editor editor = new Editor();
     //public static Undo undo = new Undo();
     //ssspublic static Redo redo = new Redo();
     
     public static int currentMemento;
-   
-
     
     public static void main(String[] args) {
         
@@ -42,6 +41,7 @@ public class CasoEditor {
         editor.setVisible(true);
         Save save = new Save();
         save.start();
+        currentMemento = caretaker.mementos.size();
         // TODO code application logic here
         
         /*CareTaker caretaker = new CareTaker();

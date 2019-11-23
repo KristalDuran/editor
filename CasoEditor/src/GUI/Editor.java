@@ -7,6 +7,8 @@ package GUI;
 
 import Editor.Controller;
 import Editor.Text;
+import static casoeditor.CasoEditor.caretaker;
+import static casoeditor.CasoEditor.currentMemento;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -32,7 +34,6 @@ public class Editor extends javax.swing.JFrame {
         text = new Text();
         controller = new Controller();
         initComponents();
-        save();
     }
 
     /**
@@ -96,8 +97,18 @@ public class Editor extends javax.swing.JFrame {
         });
 
         jButton5.setText("Undo");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Redo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Copiar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -288,6 +299,19 @@ public class Editor extends javax.swing.JFrame {
         jTextField1.setText(controller.getText().getWords());
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        controller.execute("undo");
+        System.out.println(controller.getOriginator().save().getState().getWords());
+        jTextField1.setText(controller.getOriginator().save().getState().getWords());
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        controller.execute("redo");
+        jTextField1.setText(controller.getOriginator().save().getState().getWords());
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     public void setColorText(Color color){
         jTextField1.setForeground(color);
         this.color = color.toString();
@@ -296,13 +320,21 @@ public class Editor extends javax.swing.JFrame {
     public void save(){
         //aqui va la accion de guardar un memento cada 3 segundos
         //hacer un metodo para llamarlo aquí 
-        System.out.println("si");
-        text = new Text();
-        text.setColor(color);
-        text.addWord(jTextField1.getText());
-        text.setBlack(black);
-        controller.getOriginator().setState(text);
-        controller.getCareTaker().addMemento(controller.getOriginator().save());
+        //System.out.println("si");
+        if(controller.getOriginator().save().getState() != null){
+            System.out.println("cambio");
+            if(!controller.getOriginator().save().getState().getWords().equals(jTextField1.getText())){
+                System.out.println("no es igual");
+                text = new Text();
+                text.setColor(color);
+                System.err.println("" + jTextField1.getText());
+                text.addWord(jTextField1.getText());
+                text.setBlack(black);
+                controller.getOriginator().setState(text);
+                controller.getCareTaker().addMemento(controller.getOriginator().save());
+                currentMemento++;
+            }
+        }
     }
     
     public void setText(String texto){
