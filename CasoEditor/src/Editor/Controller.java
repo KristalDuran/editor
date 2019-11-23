@@ -25,7 +25,8 @@ import java.util.ArrayList;
  */
 public class Controller {
     Invoker invoker;
-    Text text;
+    Originator originator;
+    CareTaker careTaker;
     ISaveAS saveAs;
     Context context;
     String route;
@@ -35,8 +36,9 @@ public class Controller {
     
     public Controller() {
         invoker = new Invoker();
-        text = new Text();
+        originator = new Originator();
         context = new Context();
+        careTaker = new CareTaker();
     }
 
     public void addNegrita(String text){
@@ -44,9 +46,13 @@ public class Controller {
     }
     
     public Text getText() {
-        return text;
+        return originator.save().getState();
     }
 
+    public Originator getOriginator(){
+        return originator;
+    }
+    
     public void setSaveAs(String type){
         System.out.println("SaveAs: " + type);
         switch(type) {
@@ -75,6 +81,10 @@ public class Controller {
             return true;
         }
         return false;
+    }
+    
+    public CareTaker getCareTaker(){
+        return careTaker;
     }
     
     public String[] getListFiles() {
@@ -119,7 +129,7 @@ public class Controller {
                 invoker.registerCommand(new Copy(textCopy));
                 break;
             case "paste":
-                invoker.registerCommand(new Paste(textCopy, text));
+                invoker.registerCommand(new Paste(textCopy, getText()));
                 break;
             case "cut":
                 invoker.registerCommand(new Cut());
@@ -134,10 +144,10 @@ public class Controller {
                 invoker.registerCommand(new Undo());
                 break;
             case "save":
-                invoker.registerCommand(new Save(text, route));
+                invoker.registerCommand(new Save(getText(), route));
                 break;
             case "saveAs":
-                invoker.registerCommand(new SaveAs(context, text, route));
+                invoker.registerCommand(new SaveAs(context, getText(), route));
                 break;
             case "new":
                 invoker.registerCommand(new Create());

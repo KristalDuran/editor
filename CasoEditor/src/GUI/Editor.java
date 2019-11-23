@@ -6,9 +6,13 @@
 package GUI;
 
 import Editor.Controller;
+import Editor.Text;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -17,12 +21,18 @@ import javax.swing.JOptionPane;
 public class Editor extends javax.swing.JFrame {
 
     Controller controller;
+    Text text;
+    String color;
+    boolean black = false;
+    
     /**
      * Creates new form Editor
      */
     public Editor() {
+        text = new Text();
         controller = new Controller();
         initComponents();
+        save();
     }
 
     /**
@@ -45,7 +55,6 @@ public class Editor extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -104,8 +113,6 @@ public class Editor extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setText("Cortar");
-
         jButton12.setText("Resaltar");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,12 +152,9 @@ public class Editor extends javax.swing.JFrame {
                     .addComponent(jButton8))
                 .addGap(106, 106, 106)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton12)
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton13))
-                    .addComponent(jButton11))
-                .addContainerGap(106, Short.MAX_VALUE))
+                    .addComponent(jButton12)
+                    .addComponent(jButton13))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,15 +165,14 @@ public class Editor extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton5)
                     .addComponent(jButton7)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13))
+                    .addComponent(jButton12))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton4)
                     .addComponent(jButton6)
                     .addComponent(jButton8)
-                    .addComponent(jButton11))
+                    .addComponent(jButton13))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -184,11 +187,13 @@ public class Editor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(241, 241, 241)
+                .addGap(102, 102, 102)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +245,11 @@ public class Editor extends javax.swing.JFrame {
         Font font = new Font(jTextField1.getSelectedText(), Font.BOLD, 12);
         System.out.println("font " + font.toString());
         jTextField1.setFont(font);
-        controller.getText().setBlack(true);
+        if(!black){
+            jTextField1.setText(jTextField1.getText());
+        }
+        controller.getText().setBlack(!black);
+        black = !black;
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -281,6 +290,19 @@ public class Editor extends javax.swing.JFrame {
 
     public void setColorText(Color color){
         jTextField1.setForeground(color);
+        this.color = color.toString();
+    }
+    
+    public void save(){
+        //aqui va la accion de guardar un memento cada 3 segundos
+        //hacer un metodo para llamarlo aquí 
+        System.out.println("si");
+        text = new Text();
+        text.setColor(color);
+        text.addWord(jTextField1.getText());
+        text.setBlack(black);
+        controller.getOriginator().setState(text);
+        controller.getCareTaker().addMemento(controller.getOriginator().save());
     }
     
     public void setText(String texto){
@@ -290,7 +312,6 @@ public class Editor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;

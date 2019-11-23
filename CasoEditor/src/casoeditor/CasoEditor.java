@@ -7,6 +7,7 @@ package casoeditor;
 
 import Editor.CareTaker;
 import Editor.Originator;
+import Editor.Save;
 import Editor.Text;
 import GUI.Editor;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,8 @@ public class CasoEditor {
         
     
         editor.setVisible(true);
+        Save save = new Save();
+        save.start();
         // TODO code application logic here
         
         
