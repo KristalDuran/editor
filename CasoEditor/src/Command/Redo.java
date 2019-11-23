@@ -5,14 +5,26 @@
  */
 package Command;
 
+import Editor.CareTaker;
+import Editor.Memento;
+import casoeditor.CasoEditor;
+
 /**
  *
  * @author kduran
  */
 public class Redo implements ICommand{
     
+    public Memento redoMemento(){
+        if(CareTaker.mementos.size()<=20){
+            return CareTaker.mementos.get(CasoEditor.currentMemento+1);
+        }
+        return null;
+        
+    }
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        redoMemento();
+        
     }
 }

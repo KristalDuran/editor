@@ -26,6 +26,10 @@ public class CasoEditor {
     public static CareTaker caretaker = new CareTaker();
     public static Editor editor = new Editor();
     
+    public static int currentMemento;
+   
+
+    
     public static void main(String[] args) {
         
     
@@ -63,8 +67,11 @@ public class CasoEditor {
                
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //aqui va la accion de guardar un memento cada 3 segundos
-                //hacer un metodo para llamarlo aquí 
+                 
+                
+                //ocupo traerme el memento actual y guardarlo
+                //caretaker.addMemento(m);
+                currentMemento = caretaker.mementos.size();
             }
             });
     }

@@ -12,11 +12,13 @@ import java.util.ArrayList;
  * @author raque
  */
 public class CareTaker {
-    private ArrayList<Memento> mementos = new ArrayList<>();
+    public static ArrayList<Memento> mementos = new ArrayList<>();
 
     public void addMemento(Memento m) {
-        if(mementos.size()>20){
+        if(mementos.size()==20){
             mementos.remove(0);
+            mementos.add(m);
+        }else{
             mementos.add(m);
         }
         
